@@ -78,9 +78,6 @@ namespace ConstroleDeMedicamentos
                             case "3":
                                 telaFornecedor.EditarElemento();
                                 break;
-                            case "4":
-                                telaFornecedor.ExcluirElemento();
-                                break;
                             default:
                                 break;
                         }
@@ -98,9 +95,6 @@ namespace ConstroleDeMedicamentos
                                 break;
                             case "3":
                                 telaFuncionario.EditarElemento();
-                                break;
-                            case "4":
-                                telaFuncionario.ExcluirElemento();
                                 break;
                             default:
                                 break;
@@ -120,9 +114,6 @@ namespace ConstroleDeMedicamentos
                             case "3":
                                 telaMedicamento.EditarElemento();
                                 break;
-                            case "4":
-                                telaMedicamento.ExcluirElemento();
-                                break;
                             default:
                                 break;
                         }
@@ -141,9 +132,6 @@ namespace ConstroleDeMedicamentos
                             case "3":
                                 telaPaciente.EditarElemento();
                                 break;
-                            case "4":
-                                telaPaciente.ExcluirElemento();
-                                break;
                             default:
                                 break;
                         }
@@ -159,12 +147,6 @@ namespace ConstroleDeMedicamentos
                             case "2":
                                 telaReposicao.VisualizarElementos();
                                 break;
-                            case "3":
-                                telaReposicao.EditarElemento();
-                                break;
-                            case "4":
-                                telaReposicao.ExcluirElemento();
-                                break;
                             default:
                                 break;
                         }
@@ -179,12 +161,6 @@ namespace ConstroleDeMedicamentos
                                 break;
                             case "2":
                                 telaRequisicao.VisualizarElementos();
-                                break;
-                            case "3":
-                                telaRequisicao.EditarElemento();
-                                break;
-                            case "4":
-                                telaRequisicao.ExcluirElemento();
                                 break;
                             default:
                                 break;
@@ -203,11 +179,11 @@ namespace ConstroleDeMedicamentos
 
             Console.WriteLine("Controle de Medicamentos 1.0\n"
                             + "->Digite 1 para Cadastrar Fornecedores\n"
-                            + "->Digite 1 para Cadastrar Funcionarios\n"
-                            + "->Digite 2 para Cadastrar Medicamento\n"
-                            + "->Digite 3 para Cadastrar Paciente\n"
-                            + "->Digite 4 para Cadastrar Reposição\n"
-                            + "->Digite 4 para Cadastrar Requisição\n"
+                            + "->Digite 2 para Cadastrar Funcionarios\n"
+                            + "->Digite 3 para Cadastrar Medicamento\n"
+                            + "->Digite 4 para Cadastrar Paciente\n"
+                            + "->Digite 5 para Cadastrar Reposição\n"
+                            + "->Digite 6 para Cadastrar Requisição\n"
                             + "\n"
                             + "->Digite s para Sair");
 

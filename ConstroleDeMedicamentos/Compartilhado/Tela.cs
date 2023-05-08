@@ -44,12 +44,13 @@ namespace ConstroleDeMedicamentos.ConsoleApp.Compartilhado
             Console.ForegroundColor = ConsoleColor.Cyan;
             foreach (TipoEntidade e in listaDeEntidades)
             {
-                // Para cada propriedade adiciona o valor no ArrayList para gerar o cabeçalho
-                foreach (PropertyInfo p in typeof(TipoEntidade).GetProperties())
-                    listaDePropriedadesEValores.Add($"{p.Name}: {Convert.ToString(p.GetValue(e))}");
+                listaDePropriedadesEValores.AddRange(SelecionarValorAtributoElementos(e, ""));
+                //// Para cada propriedade adiciona o valor no ArrayList para gerar o cabeçalho
+                //foreach (PropertyInfo p in typeof(TipoEntidade).GetProperties())
+                //    listaDePropriedadesEValores.Add($"{p.Name}: {Convert.ToString(p.GetValue(e))}");
 
                 elemento = String.Join("\n", listaDePropriedadesEValores);
-                Console.WriteLine(elemento);
+                Console.WriteLine(elemento + "\n");
                 listaDePropriedadesEValores.Clear();
                 elemento = "";
             }
@@ -57,7 +58,29 @@ namespace ConstroleDeMedicamentos.ConsoleApp.Compartilhado
             Console.ResetColor();
         }
 
-        public string ApresentarMenuCadastroElemento()
+        private List<string> SelecionarValorAtributoElementos<T>(T entidade, string offset)
+        {
+            List<string> listaDePropriedadesEValoresBase = new List<string>();
+            List<string> listaDePropriedadesEValoresDerivado = new List<string>();
+
+
+            // Para cada propriedade adiciona o valor no ArrayList para gerar o cabeçalho
+            foreach (PropertyInfo p in entidade.GetType().GetProperties())
+            {
+                if (p.GetValue(entidade).GetType().BaseType == typeof(Entidade))
+                {
+                    listaDePropriedadesEValoresDerivado.Add("");
+                    listaDePropriedadesEValoresDerivado.AddRange(SelecionarValorAtributoElementos(p.GetValue(entidade), $"{offset}\t"));
+                }
+                else
+                    listaDePropriedadesEValoresBase.Add($"{offset}{entidade.GetType().Name} {p.Name}: {Convert.ToString(p.GetValue(entidade))}");
+            }
+
+            listaDePropriedadesEValoresBase.AddRange(listaDePropriedadesEValoresDerivado);
+            return listaDePropriedadesEValoresBase;
+        }
+
+        public virtual string ApresentarMenuCadastroElemento()
         {
             Console.Clear();
 

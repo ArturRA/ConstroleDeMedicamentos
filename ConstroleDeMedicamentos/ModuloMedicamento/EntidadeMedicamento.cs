@@ -2,12 +2,12 @@
 
 namespace ConstroleDeMedicamentos.ModuloMedicamento
 {
-    internal class EntidadeMedicamento : Entidade
+    internal class EntidadeMedicamento : Entidade, IComparable
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public int QuantidadeDisponivel { get; set; }
-        public int QuantidadeVendida { get; set; } = 0;
+        public int QuantidadeSaida { get; set; } = 0;
         public bool QuantidadeBaixaAviso { get { return QuantidadeDisponivel <= 10; }}
 
         public EntidadeMedicamento(string nome, string descricao, int quantidadeDisponivel)
@@ -25,7 +25,21 @@ namespace ConstroleDeMedicamentos.ModuloMedicamento
         public void RegistrarSaida(int quantidadeMedicamento)
         {
             this.QuantidadeDisponivel -= quantidadeMedicamento;
-            this.QuantidadeVendida += quantidadeMedicamento;
+            this.QuantidadeSaida += quantidadeMedicamento;
+        }
+
+        public int CompareTo(object? obj)
+        {
+            EntidadeMedicamento medicamento = (EntidadeMedicamento)obj;
+
+            return QuantidadeSaida.CompareTo(medicamento.QuantidadeSaida);
+
+            //if (QuantidadeSaida > medicamento.QuantidadeSaida)
+            //    return 1;
+            //if (QuantidadeSaida < medicamento.QuantidadeSaida)
+            //    return -1;
+            //else
+            //    return 0;
         }
     }
 }

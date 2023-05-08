@@ -8,16 +8,30 @@ namespace ConstroleDeMedicamentos.ModuloPaciente
 
         protected override EntidadePaciente ObterInformacaoElementoUsuario()
         {
+            string nome, SUS;
 
-            Console.Write($"Digite o nome do {TipoDaTela}: ");
-            string nome = Console.ReadLine();
-
-            Console.Write($"Digite o numero do SUS do {TipoDaTela}: ");
-            string SUS = Console.ReadLine();
+            while (true)
+            {
+                Console.Write($"Digite o nome do {TipoDaTela}: ");
+                nome = Console.ReadLine();
+                if (string.IsNullOrEmpty(nome.Trim()))
+                    Console.WriteLine("O campo \"nome\" é obrigatório");
+                else
+                    break;
+            }
+            while (true)
+            {
+                Console.Write($"Digite o SUS do {TipoDaTela}: ");
+                SUS = Console.ReadLine();
+                if (string.IsNullOrEmpty(SUS.Trim()))
+                    Console.WriteLine("O campo \"SUS\" é obrigatório");
+                else
+                    break;
+            }
 
             EntidadePaciente elemento = new EntidadePaciente(nome, SUS);
 
-            return (EntidadePaciente)Convert.ChangeType(elemento, typeof(EntidadePaciente));
+            return elemento;
         }
     }
 }

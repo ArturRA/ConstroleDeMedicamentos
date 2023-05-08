@@ -8,38 +8,39 @@ namespace ConstroleDeMedicamentos.ModuloFuncionario
 
         protected override EntidadeFuncionario ObterInformacaoElementoUsuario()
         {
+            string nome, login, senha;
 
-            Console.Write($"Digite o nome do {TipoDaTela}: ");
-            string nome = Console.ReadLine();
-
-            Console.Write($"Digite o login do {TipoDaTela}: ");
-            string login = Console.ReadLine();
-
-            Console.Write($"Digite a senha do {TipoDaTela}: ");
-            string senha = Console.ReadLine();
+            while (true)
+            {
+                Console.Write($"Digite o nome do {TipoDaTela}: ");
+                nome = Console.ReadLine();
+                if (string.IsNullOrEmpty(nome.Trim()))
+                    Console.WriteLine("O campo \"nome\" é obrigatório");
+                else
+                    break;
+            }
+            while (true)
+            {
+                Console.Write($"Digite o login do {TipoDaTela}: ");
+                login = Console.ReadLine();
+                if (string.IsNullOrEmpty(login.Trim()))
+                    Console.WriteLine("O campo \"login\" é obrigatório");
+                else
+                    break;
+            }
+            while (true)
+            {
+                Console.Write($"Digite a senha do {TipoDaTela}: ");
+                senha = Console.ReadLine();
+                if (string.IsNullOrEmpty(senha.Trim()))
+                    Console.WriteLine("O campo \"senha\" é obrigatório");
+                else
+                    break;
+            }
 
             EntidadeFuncionario elemento = new EntidadeFuncionario(nome, login, senha);
 
-            return (EntidadeFuncionario)Convert.ChangeType(elemento, typeof(EntidadeFuncionario));
+            return elemento;
         }
-
-        //public void InserirReposicao()
-        //{
-        //    Console.WriteLine($"Cadastro de {TipoDaTela}\n"
-        //                    + $"Inserindo novo(a) {TipoDaTela}:\n");
-
-        //    if (ChecarTemTodosAtributosDisponiveis())
-        //    {
-        //        TipoEntidade novoElemento = ObterInformacaoElementoUsuario();
-
-        //        Repositorio.Inserir(novoElemento);
-
-        //        ApresentarMensagemColorida($"{TipoDaTela} inserido(a) com sucesso!", ConsoleColor.Green);
-        //        Console.ReadLine();
-        //    }
-        //    else
-        //        return;
-
-        //}
     }
 }

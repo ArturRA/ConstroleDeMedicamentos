@@ -45,6 +45,8 @@ namespace ConstroleDeMedicamentos.ModuloReposicao
             int idSelecionado;
             while (true)
             {
+                TelaFornecedor.ListarElementos();
+
                 Console.Write($"Digite o Id do(a) {TelaFornecedor.TipoDaTela}: ");
 
                 idSelecionado = Convert.ToInt32(Console.ReadLine());
@@ -59,6 +61,8 @@ namespace ConstroleDeMedicamentos.ModuloReposicao
 
             while (true)
             {
+                TelaFuncionario.ListarElementos();
+
                 Console.Write($"Digite o Id do(a) {TelaFuncionario.TipoDaTela}: ");
 
                 idSelecionado = Convert.ToInt32(Console.ReadLine());
@@ -73,6 +77,8 @@ namespace ConstroleDeMedicamentos.ModuloReposicao
 
             while (true)
             {
+                TelaMedicamento.ListarElementos();
+
                 Console.Write($"Digite o Id do(a) {TelaMedicamento.TipoDaTela}: ");
 
                 idSelecionado = Convert.ToInt32(Console.ReadLine());
