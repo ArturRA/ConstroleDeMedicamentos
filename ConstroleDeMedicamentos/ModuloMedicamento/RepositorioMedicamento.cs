@@ -25,10 +25,6 @@ namespace ConstroleDeMedicamentos.ModuloMedicamento
             List<EntidadeMedicamento> medicamentos = new List<EntidadeMedicamento>(Registros);
             medicamentos.Sort((a, b) => b.QuantidadeSaida.CompareTo(a.QuantidadeSaida));
             return medicamentos;
-
-            //medicamentos.Sort((a, b) => b .CompareTo(a));
-            //li.Sort((a, b) => a.CompareTo(b)); // ascending sort
-            //li.Sort((a, b) => b.CompareTo(a)); // descending sort
         }
     }
 }
